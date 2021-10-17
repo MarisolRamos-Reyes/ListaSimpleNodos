@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-
-namespace ListaSimpleNodos
+﻿namespace ListaSimpleNodos
 {
     class Nodo
     {
@@ -47,9 +40,5 @@ namespace ListaSimpleNodos
             telefono = tel;
             siguiente = null;
         }
-        //public override string ToString()
-        //{
-        //    return numero + " - "+nombre+" - "+telefono;
-        //}
     }
 }

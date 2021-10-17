@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ListaSimpleNodos
@@ -17,7 +10,7 @@ namespace ListaSimpleNodos
         {
             InitializeComponent();
             miLista = new Lista();
-            miLista.Cargar("testListaSimple");
+            miLista.Cargar();
             miLista.Mostrar(lstDato1);
         }
 
@@ -35,7 +28,7 @@ namespace ListaSimpleNodos
             txttelefono.Clear();
             txtingresar.Focus();
             miLista.Mostrar(lstDato1);
-            miLista.Guardar("ListaCircular");
+            miLista.Guardar();
             }
             catch (Exception ex)
             {
@@ -71,7 +64,6 @@ namespace ListaSimpleNodos
                 {
                     txtNombre.Text = b.Nombre;
                     txttelefono.Text = b.Telefono;
-                    //MessageBox.Show("Existe");
                 }
                 else
                 {
@@ -98,7 +90,6 @@ namespace ListaSimpleNodos
                 txttelefono.Clear();
                 txtingresar.Focus();
                 miLista.Mostrar(lstDato1);
-                //MessageBox.Show(miLista + " ");
             }
             catch (Exception ex)
             {

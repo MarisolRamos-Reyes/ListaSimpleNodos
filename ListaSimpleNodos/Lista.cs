@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 
@@ -143,17 +139,15 @@ namespace ListaSimpleNodos
                 h = h.Siguiente;
             }
         }
-        public void Guardar(string nombreArchivo)
+        public void Guardar()
         {
-
             Nodo h = head;
 
             if (head == null)
             {
                 return;
             }
-            nombreArchivo = "testListaSimple";
-            string path = @"c:\ListaSimple\" + nombreArchivo + ".txt";
+            string path = @"c:\ListaSimple\testListaSimple.txt";
             using (StreamWriter sw = File.CreateText(path))
             {
                 do
@@ -164,38 +158,32 @@ namespace ListaSimpleNodos
                 return;
             }
         }
-        public void Cargar(string nombreArchivo)
+        public void Cargar()
         {
-            nombreArchivo = "testListaSimple";
-            string[] lineas = File.ReadAllLines(@"C:\ListaSimple\" + nombreArchivo + ".txt");
-            foreach (var linea in lineas)
+            string buscar = @"C:\ListaSimple\testListaSimple.txt";
+            if (File.Exists(buscar))
             {
-                if (linea.Length == 0)
+                string[] lineas = File.ReadAllLines(@"C:\ListaSimple\testListaSimple.txt");
+                foreach (var linea in lineas)
                 {
-                    continue;
+                    if (linea.Length == 0)
+                    {
+                        continue;
+                    }
+                    string[] datos = linea.Split('-');
+                    int numero = int.Parse(datos[0]);
+                    string nombre = datos[1];
+                    string telefono = datos[2];
+                    Nodo n = new Nodo(numero, nombre, telefono);
+                    Agregar(n);
                 }
-                string[] datos = linea.Split('-');
-                int numero = int.Parse(datos[0]);
-                string nombre = datos[1];
-                string telefono = datos[2];
-                Nodo n = new Nodo(numero, nombre, telefono);
-                Agregar(n);
-            } 
+            }
+            else
+            {
+                return;
+            }
         }
-        //public override string ToString()
-        //{
-        //    string listaEnTexto = "";
-        //    Nodo h = head;
-        //    while (h != null)
-        //    {
-        //        listaEnTexto += h.ToString() + " ";
-        //        ListViewItem datos = new ListViewItem(Convert.ToString(h.numero));
-        //        datos.SubItems.Add(h.nombre);
-        //        datos.SubItems.Add(h.telefono);
-        //        h = h.Siguiente;
-        //    }
-        //    return listaEnTexto;
-        //}
-
     }
 }
+
+    
